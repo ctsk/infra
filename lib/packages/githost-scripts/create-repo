@@ -1,0 +1,24 @@
+#!/bin/python
+
+import os
+import re
+import sys
+
+def exit_err(msg):
+    print(msg, file=sys.stderr)
+    exit(-1)
+
+if len(sys.argv) != 2:
+    exit_err("only one argument allowed: name of the repo to create")
+
+repo_name = sys.argv[1]
+
+if re.fullmatch(r'[A-Za-z0-9-_.]+', repo_name) is None:
+    exit_err("the repository name may only contain numbers, characters, aswell as . - _")
+
+try:
+    os.mkdir(repo_name, 775)
+except FileExistsError:
+    exit_err("there's already a different repository of that name")
+except FileNotFoundError:
+    exit_err("how ... has the git directory gone missing?")

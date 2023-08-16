@@ -66,7 +66,7 @@ in {
       description = mdDoc ''
       Where to look for git repos
       '';
-    }
+    };
 
     port = mkOption {
       default = 80;
