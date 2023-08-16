@@ -1,4 +1,4 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 let
   portMapping = {
     cgit = 10001;
@@ -10,15 +10,15 @@ in
 {
   imports = [
     ./crucible-hardware.nix
-    ../modules/cgit.nix
-    ../modules/githost.nix
+    ../../modules/cgit.nix
+    ../../modules/githost.nix
   ];
 
   nixpkgs.overlays = [
-    (super: self: { h2o = super.callPackage ../packages/h2o {}; })
-    (super: self: { cgit-server = super.callPackage ../packages/cgit-server {}; })
-    (super: self: { logo = super.callPackage ../packages/logo {}; })
-    (super: self: { githost-scripts = super.callPackage ../packages/githost-scripts {}; })
+    (super: self: { h2o = super.callPackage ../../packages/h2o { }; })
+    (super: self: { cgit-server = super.callPackage ../../packages/cgit-server { }; })
+    (super: self: { logo = super.callPackage ../../packages/logo { }; })
+    (super: self: { githost-scripts = super.callPackage ../../packages/githost-scripts { }; })
   ];
 
   system.stateVersion = "23.05";
