@@ -46,7 +46,19 @@ in
   };
 
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking = {
+    interfaces = {
+      ens3.ipv6.addresses = [{
+        address = "2a03:4000:6:30cc::";
+        prefixLength = 64;
+      }];
+    };
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "ens3";
+    };
+    firewall.allowedTCPPorts = [ 80 443 ];
+  };
 
   programs.mosh.enable = true;
 
