@@ -68,6 +68,9 @@ in
   nix.settings = {
     trusted-users = [ "@wheel" ];
     require-sigs = false;
+    trusted-public-keys = [
+      "labyrinth-1:GCR2h5k9WFvome2mrFRBtiWw7sAn+pYZwXRwAj9W0b0="
+    ];
   };
 
   security = {
